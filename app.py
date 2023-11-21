@@ -9,7 +9,7 @@ def main():
     st.text("Fonctionnement de l'application, le modèle utilise le contenu de la colonne \n'Description' afin de prédire le sous-ensemble. Le modèle se base sur les \nincidents déjà catégorisés par des humains pour apprendre. \nJ'ai ignoré les sous-ensembles dont le nombre d'occurences est inférieur à 10.")
 
     with st.spinner('Télécharger le fichier Excel...'):
-        uploaded_file = st.file_uploader("Choisissez un fichier Excel", type=['xlsx'])
+        uploaded_file = st.file_uploader("Choisissez un fichier Excel", type=['xlsx'])ez un fichier Excel", type=['xlsx'])
     
     if uploaded_file is not None:
         # Lecture du fichier Excel
