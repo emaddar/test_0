@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 import requests
-
+from myfunctions import get_prediction
 
 
 def main():
@@ -18,25 +18,8 @@ def main():
 
     # Check if the user has entered any text
     if user_input:
-        # Define the API endpoint
-        api_endpoint = "http://20.19.222.85/predict"
-
-        # Prepare the data in the required format
-        payload = {
-            "description": [user_input]
-        }
-
-        # Make a POST request to the API
-        response = requests.post(api_endpoint, json=payload)
-
-        # Check if the request was successful (status code 200)
-        if response.status_code == 200:
-            # Display the prediction result
-            result = response.json()
-            st.success(f"Prediction: {result['category'][0]}")
-        else:
-            # Display an error message if the request was not successful
-            st.error(f"Failed to get prediction. Status code: {response.status_code}")
+        st.write(get_prediction(user_input))
+        
 
 if __name__ == "__main__":
     main()
