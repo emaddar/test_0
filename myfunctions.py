@@ -16,8 +16,8 @@ def get_prediction(user_input):
     if response.status_code == 200:
         # Extract the prediction result
         result = response.json()
-        prediction = result['category']
-        return prediction
+        # prediction = result['category']
+        return result
     else:
         # Return None if the request was not successful
         st.error(f"Failed to get prediction. Status code: {response.status_code}")
