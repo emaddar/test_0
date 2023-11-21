@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 from myfunctions import get_prediction
-import openpyxl
+
 
 def main():
     st.title("Outil de prédiction des catégories")
