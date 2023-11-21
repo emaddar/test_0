@@ -6,7 +6,7 @@ def get_prediction(user_input):
 
     # Prepare the data in the required format
     payload = {
-        "description": [user_input]
+        "description": user_input
     }
 
     # Make a POST request to the API
