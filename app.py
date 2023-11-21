@@ -8,32 +8,32 @@ def main():
     st.title("Outil de prédiction des catégories")
     st.text("Fonctionnement de l'application, le modèle utilise le contenu de la colonne \n'Description' afin de prédire le sous-ensemble. Le modèle se base sur les \nincidents déjà catégorisés par des humains pour apprendre. \nJ'ai ignoré les sous-ensembles dont le nombre d'occurences est inférieur à 10.")
 
-    # with st.spinner('Télécharger le fichier Excel...'):
-    #     uploaded_file = st.file_uploader("Choisissez un fichier Excel", type=['xlsx'])
+    with st.spinner('Télécharger le fichier Excel...'):
+        uploaded_file = st.file_uploader("Choisissez un fichier Excel", type=['xlsx'])
     
-    # if uploaded_file is not None:
-    #     # Lecture du fichier Excel
-    #     df = pd.read_excel(uploaded_file)  
-    #     # Select only the columns 'Description', 'sous ensemble'
-    #     selected_columns = ['Description', 'sous ensemble ']
-    #     df = df[selected_columns]
+    if uploaded_file is not None:
+        # Lecture du fichier Excel
+        df = pd.read_excel(uploaded_file)  
+        # Select only the columns 'Description', 'sous ensemble'
+        selected_columns = ['Description', 'sous ensemble ']
+        df = df[selected_columns].head()
 
-    #     # Select only the rows where 'sous ensemble ' is "#non catégorisé"
-    #     df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
+        # Select only the rows where 'sous ensemble ' is "#non catégorisé"
+        df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
 
-    #     # Print the number of rows
-    #     st.write("Nombre de lignes avec 'sous ensemble' en tant que '#non catégorisé':", len(df_filtered))
+        # Print the number of rows
+        st.write("Nombre de lignes avec 'sous ensemble' en tant que '#non catégorisé':", len(df_filtered))
 
-    #     text_list = df_filtered['Description'].values.tolist()
+        text_list = df_filtered['Description'].values.tolist()
     
-    # st.write(text_list)  
+
     # Streamlit app code
     st.title("API Prediction App")
 
-    # Get input from the user using st.text_input
-    user_input = ['Hi', 'Hello']
+ 
 
-    st.write(get_prediction(user_input))
+    with st.spinner("call api ...")
+        st.write(get_prediction(text_list))
         
 
 if __name__ == "__main__":
