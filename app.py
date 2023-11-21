@@ -32,7 +32,7 @@ def main():
 
  
 
-    with st.spinner("call api ...")
+    with st.spinner("call api ..."):
         st.write(get_prediction(text_list))
         
 
