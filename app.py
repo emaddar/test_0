@@ -33,7 +33,7 @@ def main():
         if response.status_code == 200:
             # Display the prediction result
             result = response.json()
-            st.success(f"Prediction: {result['prediction'][0]}")
+            st.success(f"Prediction: {result['category'][0]}")
         else:
             # Display an error message if the request was not successful
             st.error(f"Failed to get prediction. Status code: {response.status_code}")
