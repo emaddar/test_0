@@ -13,10 +13,10 @@ def main():
     
     if uploaded_file is not None:
         # Lecture du fichier Excel
-        df = pd.read_excel(uploaded_file)  
+        df = pd.read_excel(uploaded_file).head()
         # Select only the columns 'Description', 'sous ensemble'
         selected_columns = ['Description', 'sous ensemble ']
-        df = df[selected_columns].head()
+        df = df[selected_columns]
 
         # Select only the rows where 'sous ensemble ' is "#non catégorisé"
         df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
@@ -27,13 +27,13 @@ def main():
         text_list = df_filtered['Description'].values.tolist()
     
 
-    # Streamlit app code
-    st.title("API Prediction App")
+        # Streamlit app code
+        st.title("API Prediction App")
 
- 
+    
 
-    with st.spinner("call api ..."):
-        st.write(get_prediction(text_list))
+        with st.spinner("call api ..."):
+            st.write(get_prediction(text_list))
         
 
 if __name__ == "__main__":
