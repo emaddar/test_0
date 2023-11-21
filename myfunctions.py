@@ -1,3 +1,5 @@
+import requests
+
 def get_prediction(user_input):
     # Define the API endpoint
     api_endpoint = "http://20.19.222.85/predict"
