@@ -1,4 +1,6 @@
 import requests
+import pandas as pd
+
 
 def get_prediction(user_input):
     # Define the API endpoint
