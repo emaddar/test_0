@@ -38,7 +38,7 @@ def main():
             with st.spinner("call api ..."):
                 result = get_prediction(text_list)
                 df = pd.concat([df, result], ignore_index=True)
-                st.write(result)
+                st.write(df)
 
 if __name__ == "__main__":
     main()
