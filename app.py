@@ -13,7 +13,7 @@ def main():
     
     
     if uploaded_file is not None:
-        first = st.number_input('first N rows : ', 5)
+        first = st.number_input('first N rows : ')
         if first :
             # Lecture du fichier Excel
             df = pd.read_excel(uploaded_file).head(first)
