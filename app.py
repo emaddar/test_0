@@ -16,7 +16,7 @@ def main():
         first = st.number_input('first N rows : ')
         if first :
             # Lecture du fichier Excel
-            df = pd.read_excel(uploaded_file).head(first)
+            df = pd.read_excel(uploaded_file).head(int(first))
             # Select only the columns 'Description', 'sous ensemble'
             selected_columns = ['Description', 'sous ensemble ']
             df = df[selected_columns]
