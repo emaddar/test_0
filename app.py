@@ -11,8 +11,9 @@ def main():
     
     uploaded_file = st.file_uploader("Choisissez un fichier Excel", type=['xlsx'])
     first = st.number_input('first N rows : ', 5)
-    if first :
-        if uploaded_file is not None:
+    
+    if uploaded_file is not None:
+        if first :
             # Lecture du fichier Excel
             df = pd.read_excel(uploaded_file).head(first)
             # Select only the columns 'Description', 'sous ensemble'
