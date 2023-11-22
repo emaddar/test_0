@@ -10,7 +10,7 @@ def main():
 
     
     uploaded_file = st.file_uploader("Choisissez un fichier Excel", type=['xlsx'])
-    first = st.input('first N rows : ', 5)
+    first = st.number_input('first N rows : ', 5)
     if first :
         if uploaded_file is not None:
             # Lecture du fichier Excel
