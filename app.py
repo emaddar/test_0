@@ -2,9 +2,14 @@ import streamlit as st
 import pandas as pd
 import datetime
 from myfunctions import get_prediction
+import time
 
 
 def main():
+
+    # Record the start time
+    start_time = time.time()
+
     st.title("Outil de prédiction des catégories")
     st.text("...................................")
 
@@ -13,10 +18,10 @@ def main():
     
     
     if uploaded_file is not None:
-        first = st.number_input('first N rows : ')
-        if first :
+        # first = st.number_input('first N rows : ')
+        # if first :
             # Lecture du fichier Excel
-            df = pd.read_excel(uploaded_file).head(int(first))
+            df = pd.read_excel(uploaded_file)#.head(int(first))
             # Select only the columns 'Description', 'sous ensemble'
             selected_columns = ['Description', 'sous ensemble ']
             df = df[selected_columns]
@@ -43,6 +48,11 @@ def main():
                 df.loc[df['probability'] < 0.6, 'category'] = 'à catégoriser par un humain'
                 df = df.rename(columns={'category': 'sous ensemble estimé'})
                 st.dataframe(df)
+
+
+                # Record the end time
+                end_time = time.time()
+                st.write(f"Temps de calcule : {end_time - start_time} seconds")
 
                 
 
