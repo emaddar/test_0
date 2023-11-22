@@ -3,24 +3,34 @@ import pandas as pd
 
 
 def get_prediction(user_input):
-    # Define the API endpoint
+    """
+    Fait une requête à l'API de prédiction.
+
+    Parameters:
+        user_input (str): La description pour laquelle la prédiction est demandée.
+
+    Returns:
+        pd.DataFrame: Un DataFrame contenant les résultats de la prédiction.
+    """
+
+    # Définissez l'URL de l'API
     api_endpoint = "http://20.19.222.85/predict"
 
-    # Prepare the data in the required format
+    # Préparez les données dans le format requis
     payload = {
         "description": user_input
     }
 
-    # Make a POST request to the API
+    # Faites une requête POST à l'API
     response = requests.post(api_endpoint, json=payload)
 
-    # Check if the request was successful (status code 200)
+    # Vérifiez si la requête a réussi (code d'état 200)
     if response.status_code == 200:
-        # Extract the prediction result
+        # Extrait le résultat de la prédiction
         result = response.json()
-        #prediction = result#['category']
-        return pd.DataFrame(result)#prediction
+        # Retourne le résultat sous forme de DataFrame
+        return pd.DataFrame(result)
     else:
-        # Return None if the request was not successful
-        st.error(f"Failed to get prediction. Status code: {response.status_code}")
+        # Affiche une erreur si la requête n'a pas réussi
+        print(f"Échec de la prédiction. Code d'état : {response.status_code}")
         return None
