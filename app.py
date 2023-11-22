@@ -38,7 +38,11 @@ def main():
             with st.spinner("call api ..."):
                 result = get_prediction(text_list)
                 df = pd.concat([df, result], axis = 1)
-                st.write(df)
+                
+                
+                df.loc[df['probability'] < 0.6, 'category'] = 'à catégoriser par un humain'
+                st.dataframe(df)
+
                 
 
 if __name__ == "__main__":
