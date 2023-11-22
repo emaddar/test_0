@@ -32,12 +32,13 @@ def main():
 
             # Streamlit app code
             st.title("API Prediction App")
+            
 
-        
 
             with st.spinner("call api ..."):
-                st.write(get_prediction(text_list))
-        
+                result = get_prediction(text_list)
+                df = pd.concat(df, result)
+                st.write(result)
 
 if __name__ == "__main__":
     main()
