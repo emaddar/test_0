@@ -39,6 +39,7 @@ def main():
                 result = get_prediction(text_list)
                 df = pd.concat([df, result], axis = 1)
                 st.write(df)
+                print(df)
 
 if __name__ == "__main__":
     main()
