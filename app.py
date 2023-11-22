@@ -41,6 +41,7 @@ def main():
                 
                 
                 df.loc[df['probability'] < 0.6, 'category'] = 'à catégoriser par un humain'
+                df = df.rename(columns={'category': 'sous ensemble estimé'})
                 st.dataframe(df)
 
                 
