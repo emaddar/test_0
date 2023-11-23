@@ -28,7 +28,7 @@ def main():
 
         # Sélectionnez uniquement les colonnes 'Description', 'sous ensemble'
         selected_columns = ['Description', 'sous ensemble ']
-        df = df[selected_columns]
+        df = df[selected_columns].head(100)
 
         # Sélectionnez uniquement les lignes où 'sous ensemble ' est "#non catégorisé"
         # df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
@@ -64,8 +64,8 @@ def main():
                 
                 
             
-                st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
-                st.dataframe(df)
+                        st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
+                        st.dataframe(df)
 
 
 
