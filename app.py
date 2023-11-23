@@ -77,7 +77,7 @@ def main():
                 workbook = xlsxwriter.Workbook(output, {'in_memory': True})
                 worksheet = workbook.add_worksheet()
 
-                worksheet.write('A1', 'Hello')
+                worksheet.write(df)
                 workbook.close()
 
                 st.download_button(
