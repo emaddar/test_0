@@ -78,7 +78,7 @@ def main():
 
 
 
-        if fr_pred  is not null:
+        if df_pred  is not null:
             with col23:          
                     df_xlsx = to_excel(df_pred)   
                     st.download_button(label='📥 Download Current Result',
