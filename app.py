@@ -42,11 +42,11 @@ def main():
             # Remplacez les valeurs de 'category' par 'à catégoriser par un humain' lorsque la 'probability' est inférieure à 0.6
             df.loc[df['probability'] < 0.6, 'category'] = 'à catégoriser par un humain'
             df = df.rename(columns={'category': 'sous ensemble estimé'})
-            st.dataframe(df)
 
             # Enregistrez le temps de fin
             end_time = time.time()
-            st.write(f"Temps de calcul : {end_time - start_time} secondes")
+            st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
+            st.dataframe(df)
 
 if __name__ == "__main__":
     main()
