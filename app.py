@@ -43,12 +43,14 @@ def main():
 
         st.markdown("----", unsafe_allow_html=True)
         columns = st.columns((2, 1, 2))
-        button_pressed = columns[1].button('Click Me!')
+        button = col2.button("Effectuer une prédiction")
         st.markdown("----", unsafe_allow_html=True)
-        col1, col2 , col3= st.columns(3)
+
+
+        col1, col2
         
 
-        button = col2.button("Effectuer une prédiction")
+        
         with col1:
 
                 if button :
@@ -77,7 +79,7 @@ def main():
 
 
         if fr_pred  is not null:
-            with col3:          
+            with col2:          
                     df_xlsx = to_excel(df_pred)   
                     st.download_button(label='📥 Download Current Result',
                                                     data=df_xlsx ,
