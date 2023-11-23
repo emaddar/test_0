@@ -7,9 +7,12 @@ from io import BytesIO
 import xlsxwriter
 
 
+st.set_page_config(
+    page_title="Ex-stream-ly Cool App",
+    page_icon="🧊",
+    layout="wide")
 
-if 'image' not in st.session_state:
-    st.session_state.image = None
+
 
 
 def main():
