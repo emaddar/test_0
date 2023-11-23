@@ -66,7 +66,7 @@ def main():
                         df = pd.concat([df, result], axis=1)
 
                         # Remplacez les valeurs de 'category' par 'à catégoriser par un humain' lorsque la 'probability' est inférieure à 0.6
-                        df.loc[df['probability'] < 0.6, 'category'] = 'à catégoriser par un humain'
+                        df.loc[df['probability'] < 0.6, 'category'] = 'à catégoriser par un humain*'
                         df_pred = df.rename(columns={'category': 'sous ensemble estimé'})
 
                         # Enregistrez le temps de fin
