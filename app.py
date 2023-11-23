@@ -6,8 +6,7 @@ import time
 
 def main():
 
-    # Enregistrez le temps de début
-    start_time = time.time()
+
 
     st.title("Outil de prédiction des catégories")
     st.text("...................................")
@@ -24,17 +23,19 @@ def main():
         df = df[selected_columns]
 
         # Sélectionnez uniquement les lignes où 'sous ensemble ' est "#non catégorisé"
-        df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
+        # df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
 
         # Affichez le nombre de lignes
-        st.write("Nombre de lignes avec 'sous ensemble' en tant que '#non catégorisé':", len(df_filtered))
+        st.write("Nombre de lignes avec 'sous ensemble' en tant que '#non catégorisé':", len(df))
 
-        text_list = df_filtered['Description'].values.tolist()
+        text_list = df['Description'].values.tolist()
 
         # Code de l'application Streamlit
         st.title("API Prediction App")
 
         with st.spinner("Appel API ..."):
+            # Enregistrez le temps de début
+            start_time = time.time()
             result = get_prediction(text_list)
             df = pd.concat([df, result], axis=1)
 
