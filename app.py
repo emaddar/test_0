@@ -38,40 +38,42 @@ def main():
 
         text_list = df['Description'].values.tolist()
 
-        button = st.button("Make pred.")
+        col1, col2 , col3= st.columns(3)
+            with col2:
 
-        if button :
+                button = st.button("Effectuer une prédiction")
 
-            # Code de l'application Streamlit
-            st.markdown(""" #### API Prediction App""")
+                if button :
 
-            with st.spinner("Appel API ..."):
-                # Enregistrez le temps de début
-                start_time = time.time()
-                result = get_prediction(text_list)
-                df = pd.concat([df, result], axis=1)
+                    # Code de l'application Streamlit
+                    st.markdown(""" #### API Prediction App""")
 
-                # Remplacez les valeurs de 'category' par 'à catégoriser par un humain' lorsque la 'probability' est inférieure à 0.6
-                df.loc[df['probability'] < 0.6, 'category'] = 'à catégoriser par un humain'
-                df = df.rename(columns={'category': 'sous ensemble estimé'})
+                    with st.spinner("Appel API ..."):
+                        # Enregistrez le temps de début
+                        start_time = time.time()
+                        result = get_prediction(text_list)
+                        df = pd.concat([df, result], axis=1)
 
-                # Enregistrez le temps de fin
-                end_time = time.time()
+                        # Remplacez les valeurs de 'category' par 'à catégoriser par un humain' lorsque la 'probability' est inférieure à 0.6
+                        df.loc[df['probability'] < 0.6, 'category'] = 'à catégoriser par un humain'
+                        df = df.rename(columns={'category': 'sous ensemble estimé'})
+
+                        # Enregistrez le temps de fin
+                        end_time = time.time()
                 
                 
-                col1, col2 = st.columns(2)
-                with col1:
-                    st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
-                    st.dataframe(df)
+            
+                st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
+                st.dataframe(df)
 
 
 
 
-                with col2:          
-                    df_xlsx = to_excel(df)   
-                    st.download_button(label='📥 Download Current Result',
-                                                    data=df_xlsx ,
-                                                    file_name= 'df_test.xlsx')
+            with col3:          
+                df_xlsx = to_excel(df)   
+                st.download_button(label='📥 Download Current Result',
+                                                data=df_xlsx ,
+                                                file_name= 'df_test.xlsx')
                     
 
                 
