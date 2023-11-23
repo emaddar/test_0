@@ -4,7 +4,7 @@ import datetime
 import time
 from myfunctions import get_prediction
 from io import BytesIO
-import xlsxwriter
+import XlsxWriter
 
 def main():
 
@@ -74,7 +74,7 @@ def main():
 
                 # Write files to in-memory strings using BytesIO
                 # See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
-                workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+                workbook = XlsxWriter.Workbook(output, {'in_memory': True})
                 worksheet = workbook.add_worksheet()
 
                 worksheet.write('A1', 'Hello')
