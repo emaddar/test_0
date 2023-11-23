@@ -43,7 +43,7 @@ def main():
 
         st.markdown("----", unsafe_allow_html=True)
         columns = st.columns((2, 1, 2))
-        button = col2.button("Effectuer une prédiction")
+        button = st.button("Effectuer une prédiction")
         st.markdown("----", unsafe_allow_html=True)
 
 
