@@ -20,8 +20,10 @@ def main():
 
 
 
-    st.title("Outil de prédiction des catégories")
-    st.text("...................................")
+    #st.title("Outil de prédiction des catégories")
+    st.markdown("<h1 style='text-align: center;'>Outil de prédiction des catégories</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>...................................</h1>", unsafe_allow_html=True)
+
 
     # Chargez le fichier Excel
     uploaded_file = st.file_uploader("Choisissez un fichier Excel", type=['xlsx'])
