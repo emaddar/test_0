@@ -60,8 +60,7 @@ def main():
                 st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
                 st.dataframe(df)
 
-                if "df" not in st.session_state:
-                        st.session_state.df = df
+
 
 
             with col2:
@@ -116,11 +115,10 @@ def main():
                     return processed_data
                 df_xlsx = to_excel(df)
 
-                if "df_xlsx" not in st.session_state:
-                        st.session_state.df_xlsx = df_xlsx
                 
-                if "df_xlsx" in st.session_state:
-                    st.download_button(label='📥 Download Current Result',
+                
+               
+                st.download_button(label='📥 Download Current Result',
                                                 data=df_xlsx ,
                                                 file_name= 'df_test.xlsx')
                 
