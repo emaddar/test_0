@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import time
+from io import BytesIO
 
 
 def get_prediction(user_input):
