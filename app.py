@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 import time
-from myfunctions import get_prediction, to_excel
+from myfunctions import get_prediction
 from io import BytesIO
 
 def main():
@@ -69,11 +69,22 @@ def main():
                     mime='text/csv'
                 )
 
-                # download button 2 to download dataframe as xlsx
-                df_xlsx = to_excel(df)
-                st.download_button(label='📥 Download Current Result',
-                                                data=df_xlsx ,
-                                                file_name= 'df_test.xlsx')
+                output = BytesIO()
+
+                # Write files to in-memory strings using BytesIO
+                # See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
+                workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+                worksheet = workbook.add_worksheet()
+
+                worksheet.write('A1', 'Hello')
+                workbook.close()
+
+                st.download_button(
+                    label="Download Excel workbook",
+                    data=output.getvalue(),
+                    file_name="workbook.xlsx",
+                    mime="application/vnd.ms-excel"
+                )
                 
 
 if __name__ == "__main__":
