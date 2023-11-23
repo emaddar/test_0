@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 import time
-from myfunctions import get_prediction
+from myfunctions import get_prediction, to_excel
 from io import BytesIO
 import xlsxwriter
 
@@ -69,58 +69,7 @@ def main():
 
                 with col2:
                     @st.cache_data
-                    def convert_to_csv(df):
-                        # IMPORTANT: Cache the conversion to prevent computation on every rerun
-                        return df.to_csv(index=False).encode('utf-8')
 
-                    csv = convert_to_csv(df)
-
-    
-                    # download button 1 to download dataframe as csv
-                    download1 = st.download_button(
-                        label="Download data as CSV",
-                        data=csv,
-                        file_name='large_df.csv',
-                        mime='text/csv'
-                    )
-
-                    # output = BytesIO()
-
-                    # # Write files to in-memory strings using BytesIO
-                    # # See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
-                    # workbook = xlsxwriter.Workbook(output, {'in_memory': True})
-                    # worksheet = workbook.add_worksheet()
-
-                    # worksheet.write('A1', 'Hello')
-                    # workbook.close()
-
-                    # st.download_button(
-                    #     label="Download Excel workbook",
-                    #     data=output.getvalue(),
-                    #     file_name="workbook.xlsx",
-                    #     mime="application/vnd.ms-excel"
-                    # )
-
-
-                    from io import BytesIO
-                    
-                    
-                    
-                    def to_excel(df):
-                        output = BytesIO()
-                        writer = pd.ExcelWriter(output, engine='xlsxwriter')
-                        df.to_excel(writer, index=False, sheet_name='Sheet1')
-                        workbook = writer.book
-                        worksheet = writer.sheets['Sheet1']
-                        format1 = workbook.add_format({'num_format': '0.00'}) 
-                        worksheet.set_column('A:A', None, format1)  
-                        writer.save()
-                        processed_data = output.getvalue()
-                        return processed_data
-                    df_xlsx = to_excel(df)
-
-                    
-                    
                 
                     st.download_button(label='📥 Download Current Result',
                                                     data=df_xlsx ,
