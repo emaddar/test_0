@@ -45,8 +45,14 @@ def main():
 
             # Enregistrez le temps de fin
             end_time = time.time()
-            st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
-            st.dataframe(df)
+            
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
+                st.dataframe(df)
+            with col2:
+                
 
 if __name__ == "__main__":
     main()
