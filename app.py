@@ -83,6 +83,10 @@ def main():
                                     st.write("")
                                     st.write("")
                                     st.write("")
+                                    st.write("")
+                                    st.write("")
+                                    st.write("")
+                                    
                                     df_xlsx = to_excel(df_pred)   
                                     st.download_button(label='📥 Download Current Result',
                                                                     data=df_xlsx ,
