@@ -59,6 +59,11 @@ def main():
             with col1:
                 st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
                 st.dataframe(df)
+
+                if "df" not in st.session_state:
+                        st.session_state.df = df
+
+
             with col2:
                 @st.cache_data
                 def convert_to_csv(df):
@@ -97,7 +102,7 @@ def main():
                 from io import BytesIO
                 
                 
-
+                
                 def to_excel(df):
                     output = BytesIO()
                     writer = pd.ExcelWriter(output, engine='xlsxwriter')
@@ -110,13 +115,17 @@ def main():
                     processed_data = output.getvalue()
                     return processed_data
                 df_xlsx = to_excel(df)
-                st.download_button(label='📥 Download Current Result',
+
+                if "df_xlsx" not in st.session_state:
+                        st.session_state.df_xlsx = df_xlsx
+                
+                if "df_xlsx" in st.session_state:
+                    st.download_button(label='📥 Download Current Result',
                                                 data=df_xlsx ,
                                                 file_name= 'df_test.xlsx')
                 
 
-                if st.session_state.image is not None:
-                    st.image(st.session_state.image)
+                
 
 if __name__ == "__main__":
     main()
