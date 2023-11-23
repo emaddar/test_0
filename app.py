@@ -1,8 +1,9 @@
 import streamlit as st
 import pandas as pd
 import datetime
-from myfunctions import get_prediction
 import time
+from myfunctions import get_prediction
+import io
 
 def main():
 
@@ -52,6 +53,32 @@ def main():
                 st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
                 st.dataframe(df)
             with col2:
+                st.markdown("<h4 style='text-align: left; color: black;'>  Download data as : </h4>", unsafe_allow_html=True)
+                data_type = st.radio("",("csv","xlsx"))
+
+
+                if data_type == "csv":
+                    data = df.to_csv(index = False).encode('utf-8')
+
+                    st.download_button(
+                    label=f"Download data as {data_type}",
+                    data=data,
+                    file_name=f'Data_{datetime.now()}.{data_type}',
+                    mime='text/csv',
+                    )
+
+                elif data_type == "xlsx":
+                        buffer = io.BytesIO()
+                        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+                            df.to_excel(writer, sheet_name='Data')
+                            writer.save() # Close the Pandas Excel writer and output the Excel file to the buffer
+
+                            st.download_button(
+                                label=f"Download data as {data_type}",
+                                data=buffer,
+                                file_name=f'Data_{datetime.now()}.{data_type}',
+                                mime="application/vnd.ms-excel"
+                            )
                 
 
 if __name__ == "__main__":
