@@ -70,6 +70,8 @@ def main():
                 )
 
                 # download button 2 to download dataframe as xlsx
+                # buffer to use for excel writer
+                buffer = io.BytesIO()
                 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
                     # Write each dataframe to a different worksheet.
                     df.to_excel(writer, sheet_name='Sheet1', index=False)
