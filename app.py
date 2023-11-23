@@ -8,9 +8,10 @@ import xlsxwriter
 
 
 st.set_page_config(
-    page_title="Ex-stream-ly Cool App",
+    page_title="Outil de prédiction des catégories",
     page_icon="🧊",
-    layout="wide")
+    #layout="wide"
+    )
 
 
 
@@ -79,6 +80,9 @@ def main():
                         if df_pred  is not None:
                             st.dataframe(df_pred)
                             with col2:          
+                                    st.write("")
+                                    st.write("")
+                                    st.write("")
                                     df_xlsx = to_excel(df_pred)   
                                     st.download_button(label='📥 Download Current Result',
                                                                     data=df_xlsx ,
