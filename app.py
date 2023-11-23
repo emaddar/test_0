@@ -31,7 +31,7 @@ def main():
         text_list = df['Description'].values.tolist()
 
         # Code de l'application Streamlit
-        st.title("API Prediction App")
+        st.markdown(""" #### API Prediction App""")
 
         with st.spinner("Appel API ..."):
             # Enregistrez le temps de début
