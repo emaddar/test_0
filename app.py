@@ -17,7 +17,7 @@ def main():
 
     if uploaded_file is not None:
         # Lecture du fichier Excel
-        df = pd.read_excel(uploaded_file)
+        df = pd.read_excel(uploaded_file).head(100)
 
         # Sélectionnez uniquement les colonnes 'Description', 'sous ensemble'
         selected_columns = ['Description', 'sous ensemble ']
