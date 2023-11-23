@@ -116,7 +116,7 @@ def main():
                 
 
                 if st.session_state.image is not None:
-                st.image(st.session_state.image)
+                    st.image(st.session_state.image)
 
 if __name__ == "__main__":
     main()
