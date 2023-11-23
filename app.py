@@ -53,32 +53,35 @@ def main():
                 st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
                 st.dataframe(df)
             with col2:
-                st.markdown("<h4 style='text-align: left; color: black;'>  Download data as : </h4>", unsafe_allow_html=True)
-                data_type = st.radio("",("csv","xlsx"))
+                @st.cache
+                def convert_to_csv(df):
+                    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+                    return df.to_csv(index=False).encode('utf-8')
 
+                csv = convert_to_csv(df)
 
-                if data_type == "csv":
-                    data = df.to_csv(index = False).encode('utf-8')
+                # display the dataframe on streamlit app
+                st.write(df)
 
-                    st.download_button(
-                    label=f"Download data as {data_type}",
-                    data=data,
-                    file_name=f'Data_{datetime.datetime.now()}.{data_type}',
-                    mime='text/csv',
+                # download button 1 to download dataframe as csv
+                download1 = st.download_button(
+                    label="Download data as CSV",
+                    data=csv,
+                    file_name='large_df.csv',
+                    mime='text/csv'
+                )
+
+                # download button 2 to download dataframe as xlsx
+                with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+                    # Write each dataframe to a different worksheet.
+                    df.to_excel(writer, sheet_name='Sheet1', index=False)
+
+                    download2 = st.download_button(
+                        label="Download data as Excel",
+                        data=buffer,
+                        file_name='large_df.xlsx',
+                        mime='application/vnd.ms-excel'
                     )
-
-                elif data_type == "xlsx":
-                        buffer = io.BytesIO()
-                        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-                            df.to_excel(writer, sheet_name='Data')
-                            writer.save() # Close the Pandas Excel writer and output the Excel file to the buffer
-
-                            st.download_button(
-                                label=f"Download data as {data_type}",
-                                data=buffer,
-                                file_name=f'Data_{datetime.datetime.now()}.{data_type}',
-                                mime="application/vnd.ms-excel"
-                            )
                 
 
 if __name__ == "__main__":
