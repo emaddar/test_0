@@ -56,4 +56,3 @@ def to_excel(df):
     writer.save()
     processed_data = output.getvalue()
     return processed_data
-df_xlsx = to_excel(df)
