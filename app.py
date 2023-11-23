@@ -34,7 +34,7 @@ def main():
 
         # Sélectionnez uniquement les colonnes 'Description', 'sous ensemble'
         selected_columns = ['Description', 'sous ensemble ']
-        df = df[selected_columns].head
+        df = df[selected_columns]
 
         # Sélectionnez uniquement les lignes où 'sous ensemble ' est "#non catégorisé"
         # df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
