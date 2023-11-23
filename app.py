@@ -89,8 +89,9 @@ def main():
                                     st.write("")
                                     # Calculate the percentage
                                     percentage = (len(df[df['sous ensemble estimé'] == 'à catégoriser par un humain']) / len(df)) * 100
-                                    st.write(f"le pourcentage de lignes prédit comme 'à catégoriser par un humain' : {percentage}")
                                     st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
+                                    st.write(f"le pourcentage de lignes prédit comme 'à catégoriser par un humain' : {percentage}")
+                                    
                                     
                                     df_xlsx = to_excel(df_pred)   
                                     st.download_button(label='📥 Download Current Result',
