@@ -53,7 +53,7 @@ def main():
                 st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
                 st.dataframe(df)
             with col2:
-                @st.cache
+                @st.cache_data
                 def convert_to_csv(df):
                     # IMPORTANT: Cache the conversion to prevent computation on every rerun
                     return df.to_csv(index=False).encode('utf-8')
