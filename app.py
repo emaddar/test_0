@@ -67,10 +67,7 @@ def main():
 
 
 
-                with col2:
-                    @st.cache_data
-
-                
+                with col2:             
                     st.download_button(label='📥 Download Current Result',
                                                     data=df_xlsx ,
                                                     file_name= 'df_test.xlsx')
