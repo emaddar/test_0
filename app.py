@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 import time
-from myfunctions import get_prediction
+from myfunctions import get_prediction, to_excel
 import io
 
 def main():
@@ -70,18 +70,10 @@ def main():
                 )
 
                 # download button 2 to download dataframe as xlsx
-                # buffer to use for excel writer
-                buffer = io.BytesIO()
-                with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-                    # Write each dataframe to a different worksheet.
-                    df.to_excel(writer, sheet_name='Sheet1', index=False)
-
-                    download2 = st.download_button(
-                        label="Download data as Excel",
-                        data=buffer,
-                        file_name='large_df.xlsx',
-                        mime='application/vnd.ms-excel'
-                    )
+                df_xlsx = to_excel(df)
+                st.download_button(label='📥 Download Current Result',
+                                                data=df_xlsx ,
+                                                file_name= 'df_test.xlsx')
                 
 
 if __name__ == "__main__":
