@@ -41,10 +41,8 @@ def main():
 
         text_list = df['Description'].values.tolist()
 
-        st.markdown("----", unsafe_allow_html=True)
         columns = st.columns((2, 1, 2))
         button = columns[1].button('Effectuer une prédiction')
-        st.markdown("----", unsafe_allow_html=True)
 
 
         col1, col2 = st.columns(2)
@@ -78,7 +76,7 @@ def main():
 
 
 
-        if df_pred  is not null:
+        if df_pred  is not None:
             with col23:          
                     df_xlsx = to_excel(df_pred)   
                     st.download_button(label='📥 Download Current Result',
