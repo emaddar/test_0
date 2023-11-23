@@ -40,7 +40,7 @@ def main():
         # df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
 
         # Affichez le nombre de lignes
-        st.write("Nombre de lignes avec 'sous ensemble' en tant que '#non catégorisé':", len(df))
+        st.write("Nombre de lignes à prédire :", len(df))
 
         text_list = df['Description'].values.tolist()
 
