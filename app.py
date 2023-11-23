@@ -41,6 +41,10 @@ def main():
 
         text_list = df['Description'].values.tolist()
 
+        st.markdown("----", unsafe_allow_html=True)
+        columns = st.columns((2, 1, 2))
+        button_pressed = columns[1].button('Click Me!')
+        st.markdown("----", unsafe_allow_html=True)
         col1, col2 , col3= st.columns(3)
         
 
