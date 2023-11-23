@@ -77,7 +77,7 @@ def main():
 
 
         if df_pred  is not None:
-            with col23:          
+            with col2:          
                     df_xlsx = to_excel(df_pred)   
                     st.download_button(label='📥 Download Current Result',
                                                     data=df_xlsx ,
