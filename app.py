@@ -60,8 +60,6 @@ def main():
 
                 csv = convert_to_csv(df)
 
-                # display the dataframe on streamlit app
-                st.write(df)
 
                 # download button 1 to download dataframe as csv
                 download1 = st.download_button(
