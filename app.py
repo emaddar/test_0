@@ -61,7 +61,7 @@ def main():
 
                 csv = convert_to_csv(df)
 
-
+ 
                 # download button 1 to download dataframe as csv
                 download1 = st.download_button(
                     label="Download data as CSV",
