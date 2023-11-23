@@ -11,7 +11,7 @@ import xlsxwriter
 if 'image' not in st.session_state:
     st.session_state.image = None
 
-    
+
 def main():
 
 
@@ -114,6 +114,9 @@ def main():
                                                 data=df_xlsx ,
                                                 file_name= 'df_test.xlsx')
                 
+
+                if st.session_state.image is not None:
+                st.image(st.session_state.image)
 
 if __name__ == "__main__":
     main()
