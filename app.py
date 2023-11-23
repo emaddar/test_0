@@ -17,11 +17,11 @@ def main():
 
     if uploaded_file is not None:
         # Lecture du fichier Excel
-        df = pd.read_excel(uploaded_file).head(100)
+        df = pd.read_excel(uploaded_file)
 
         # Sélectionnez uniquement les colonnes 'Description', 'sous ensemble'
         selected_columns = ['Description', 'sous ensemble ']
-        df = df[selected_columns]
+        df = df[selected_columns].head(100)
 
         # Sélectionnez uniquement les lignes où 'sous ensemble ' est "#non catégorisé"
         # df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
