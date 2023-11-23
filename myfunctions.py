@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+import time
 
 
 def get_prediction(user_input):
@@ -14,7 +15,7 @@ def get_prediction(user_input):
     """
 
     # Définissez l'URL de l'API
-    api_endpoint = "http://20.19.222.85/predict"
+    api_endpoint = "http://20.19.203.222/predict"
 
     # Préparez les données dans le format requis
     payload = {
