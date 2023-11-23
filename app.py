@@ -72,16 +72,17 @@ def main():
                 
             
                         st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
-                        st.dataframe(df_pred)
+                        
 
 
 
-                if df_pred  is not None:
-                    with col2:          
-                            df_xlsx = to_excel(df_pred)   
-                            st.download_button(label='📥 Download Current Result',
-                                                            data=df_xlsx ,
-                                                            file_name= 'df_test.xlsx')
+                        if df_pred  is not None:
+                            st.dataframe(df_pred)
+                            with col2:          
+                                    df_xlsx = to_excel(df_pred)   
+                                    st.download_button(label='📥 Download Current Result',
+                                                                    data=df_xlsx ,
+                                                                    file_name= 'df_test.xlsx')
                         
 
                 
