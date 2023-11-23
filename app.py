@@ -6,6 +6,12 @@ from myfunctions import get_prediction
 from io import BytesIO
 import xlsxwriter
 
+
+
+if 'image' not in st.session_state:
+    st.session_state.image = None
+
+    
 def main():
 
 
