@@ -39,9 +39,10 @@ def main():
         text_list = df['Description'].values.tolist()
 
         col1, col2 , col3= st.columns(3)
-            with col2:
+        
 
-                button = st.button("Effectuer une prédiction")
+        button = col2.button("Effectuer une prédiction")
+        with col1:
 
                 if button :
 
@@ -69,7 +70,7 @@ def main():
 
 
 
-            with col3:          
+        with col3:          
                 df_xlsx = to_excel(df)   
                 st.download_button(label='📥 Download Current Result',
                                                 data=df_xlsx ,
