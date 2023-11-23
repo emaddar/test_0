@@ -3,7 +3,7 @@ import pandas as pd
 import datetime
 import time
 from myfunctions import get_prediction, to_excel
-import io
+from io import BytesIO
 
 def main():
 
