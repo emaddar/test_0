@@ -76,7 +76,7 @@ def main():
                             st.download_button(
                                 label=f"Download data as {data_type}",
                                 data=buffer,
-                                file_name=f'Data_{datetime.now()}.{data_type}',
+                                file_name=f'Data_{datetime.datetime.now()}.{data_type}',
                                 mime="application/vnd.ms-excel"
                             )
                 
