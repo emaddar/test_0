@@ -94,7 +94,7 @@ if uploaded_file is not None:
                                 
                                 
                                 df_xlsx = to_excel(df_pred)   
-                                st.download_button(label='📥 Download Current Result',
+                                st.download_button(label='📥 Télécharger les résultats au format Excel',
                                                                 data=df_xlsx ,
                                                                 file_name= 'df_test.xlsx')
 
