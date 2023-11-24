@@ -90,7 +90,7 @@ if uploaded_file is not None:
                                 # Calculate the percentage
                                 percentage = (len(df_pred[df_pred['sous ensemble estimé'] == 'à catégoriser par un humain']) / len(df_pred)) * 100
                                 st.write(f"Temps de calcul : {round(end_time - start_time, 2)} secondes")
-                                st.write(f"le pourcentage de lignes prédit comme 'à catégoriser par un humain' : {percentage}")
+                                st.write(f"le pourcentage de lignes prédit comme 'à catégoriser par un humain' : {percentage}%")
                                 
                                 
                                 df_xlsx = to_excel(df_pred)   
