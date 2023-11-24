@@ -19,7 +19,7 @@ st.set_page_config(
 
 #st.title("Outil de prédiction des catégories")
 st.markdown("<h1 style='text-align: center'>Outil de prédiction des catégories</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center'>L'objectif principal de cette application est d'automatiser la prédiction des catégories pour des descriptions présentes dans un fichier Excel.</h3>", unsafe_allow_html=True)
+st.markdown("<h5 style='text-align: center'>L'objectif principal de cette application est d'automatiser la prédiction des catégories pour des descriptions présentes dans un fichier Excel.</h5>", unsafe_allow_html=True)
 
 
 # Chargez le fichier Excel
