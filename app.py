@@ -33,14 +33,14 @@ def main():
         df = pd.read_excel(uploaded_file)
 
         try:
-
             # Sélectionnez uniquement les colonnes 'Description', 'sous ensemble'
             selected_columns = ['Description', 'sous ensemble ']
+            df = df[selected_columns]
         except:
             st.warning("Vérifiez si votre fichier Excel contient les deux colonnes : 'Description' et 'sous ensemble'.", icon="⚠️")
 
-            
-        df = df[selected_columns]
+
+        
 
         # Sélectionnez uniquement les lignes où 'sous ensemble ' est "#non catégorisé"
         # df_filtered = df[df['sous ensemble '] == "#non catégorisé"]
