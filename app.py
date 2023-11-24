@@ -32,7 +32,7 @@ if uploaded_file is not None:
     try:
         # Sélectionnez uniquement les colonnes 'Description', 'sous ensemble'
         selected_columns = ['Description', 'sous ensemble ']
-        df = df[selected_columns].head(50)
+        df = df[selected_columns]
     except:
         st.warning("Vérifiez si votre fichier Excel contient les deux colonnes : 'Description' et 'sous ensemble'.", icon="⚠️")
         
